@@ -4,56 +4,117 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Emilio Solanes – Head of Delivery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --main-color: #004a7c;
+      --accent-color: #00bcd4;
+      --background-light: #f9f9f9;
+      --section-bg: #ffffff;
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
+      background: var(--background-light);
       color: #333;
+      scroll-behavior: smooth;
     }
+
     header {
-      background: url('images/amsterdam.jpg') center/cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/amsterdam.jpg') center/cover no-repeat;
       color: white;
-      padding: 80px 20px;
+      padding: 100px 20px;
       text-align: center;
     }
+
     header h1 {
-      font-size: 2.8em;
+      font-size: 3rem;
       margin-bottom: 10px;
+      animation: fadeInDown 1s ease-out;
     }
+
     header p {
       font-size: 1.2em;
+      margin-top: 5px;
+      opacity: 0.9;
     }
+
     nav {
-      background: #004a7c;
+      background: var(--main-color);
       color: white;
-      padding: 10px;
+      padding: 12px;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
+
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 15px;
+      font-weight: 600;
+      transition: color 0.3s;
     }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
     section {
       max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
+      margin: 40px auto;
+      padding: 40px 30px;
+      background: var(--section-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
+
     h2 {
-      color: #004a7c;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
+      color: var(--main-color);
+      font-size: 1.8rem;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
     }
+
+    h3 {
+      color: #222;
+      font-size: 1.2rem;
+      margin-top: 1.5em;
+    }
+
     ul {
       padding-left: 20px;
+      line-height: 1.6;
     }
+
+    ul li::marker {
+      color: var(--accent-color);
+    }
+
+    a {
+      color: var(--main-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
     footer {
       text-align: center;
       padding: 30px;
       background: #eee;
       font-size: 0.9em;
+      color: #666;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -61,7 +122,7 @@
   <header>
     <h1>Emilio Solanes</h1>
     <p>Head of Delivery | Operations Transformation | Program Director</p>
-    <p>Amsterdam, EU Citizen · <a href="mailto:emilio.solanes@alumni.ie.edu" style="color: white;">Email</a> · <a href="https://www.linkedin.com/in/esolanes" style="color: white;">LinkedIn</a></p>
+    <p>Amsterdam, EU Citizen · <a href="mailto:emilio.solanes@alumni.ie.edu" style="color: #fff; text-decoration: underline;">Email</a> · <a href="https://www.linkedin.com/in/esolanes" style="color: #fff; text-decoration: underline;">LinkedIn</a></p>
   </header>
 
   <nav>
@@ -138,4 +199,5 @@
   </footer>
 </body>
 </html>
+
 
