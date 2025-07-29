@@ -4,200 +4,696 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Emilio Solanes – Head of Delivery</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --main-color: #004a7c;
-      --accent-color: #00bcd4;
-      --background-light: #f9f9f9;
-      --section-bg: #ffffff;
+      --primary-color: #004a7c;
+      --secondary-color: #00bcd4;
+      --accent-color: #00e676;
+      --background: #0a0a0a;
+      --surface: #1a1a1a;
+      --surface-light: #2a2a2a;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --border: #333333;
+      --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: var(--background-light);
-      color: #333;
-      scroll-behavior: smooth;
-    }
-
-    header {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/amsterdam.jpg') center/cover no-repeat;
-      color: white;
-      padding: 100px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      animation: fadeInDown 1s ease-out;
-    }
-
-    header p {
-      font-size: 1.2em;
-      margin-top: 5px;
-      opacity: 0.9;
-    }
-
-    nav {
-      background: var(--main-color);
-      color: white;
-      padding: 12px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: var(--accent-color);
-    }
-
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 40px 30px;
-      background: var(--section-bg);
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-
-    h2 {
-      color: var(--main-color);
-      font-size: 1.8rem;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 8px;
-      margin-bottom: 20px;
-    }
-
-    h3 {
-      color: #222;
-      font-size: 1.2rem;
-      margin-top: 1.5em;
-    }
-
-    ul {
-      padding-left: 20px;
+      background: var(--background);
+      color: var(--text-primary);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    ul li::marker {
+    /* Animated background */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.1;
+    }
+
+    .bg-animation::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, #667eea 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, #764ba2 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, #f093fb 0%, transparent 50%);
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-20px) rotate(2deg); }
+      66% { transform: translateY(10px) rotate(-1deg); }
+    }
+
+    /* Header */
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      background: var(--gradient-1);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      z-index: 2;
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #fff, #00bcd4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: slideInUp 1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      animation: slideInUp 1s ease-out 0.2s both;
+    }
+
+    .hero-location {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+      animation: slideInUp 1s ease-out 0.4s both;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: slideInUp 1s ease-out 0.6s both;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--secondary-color);
+      color: white;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .btn-primary:hover {
+      background: #0097a7;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--primary-color);
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary-color);
+    }
+
+    /* Sections */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      background: var(--gradient-3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: var(--gradient-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+      color: white;
+      margin: 0 auto;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Experience Section */
+    .experience-timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .experience-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--secondary-color);
+    }
+
+    .experience-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: var(--surface);
+      border-radius: 12px;
+      border-left: 4px solid var(--secondary-color);
+      transition: transform 0.3s ease;
+    }
+
+    .experience-item:hover {
+      transform: translateX(10px);
+    }
+
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 2rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--secondary-color);
+      border: 3px solid var(--background);
+    }
+
+    .experience-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .experience-company {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .experience-description {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .experience-achievements {
+      list-style: none;
+    }
+
+    .experience-achievements li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+    }
+
+    .experience-achievements li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
       color: var(--accent-color);
     }
 
-    a {
-      color: var(--main-color);
-      text-decoration: none;
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .skill-category {
+      background: var(--surface);
+      padding: 2rem;
+      border-radius: 12px;
+      border-top: 4px solid var(--secondary-color);
     }
 
-    footer {
+    .skill-category h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--secondary-color);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: var(--surface-light);
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    /* Contact Section */
+    .contact-content {
       text-align: center;
-      padding: 30px;
-      background: #eee;
-      font-size: 0.9em;
-      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: var(--surface);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .contact-link:hover {
+      background: var(--secondary-color);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,188,212,0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--surface);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Animations */
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-content {
+        padding: 1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section {
+        padding: 4rem 1rem;
+      }
+    }
+
+    /* Scroll animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Emilio Solanes</h1>
-    <p>Head of Delivery | Operations Transformation | Program Director</p>
-    <p>Amsterdam, EU Citizen · <a href="mailto:emilio.solanes@alumni.ie.edu" style="color: #fff; text-decoration: underline;">Email</a> · <a href="https://www.linkedin.com/in/esolanes" style="color: #fff; text-decoration: underline;">LinkedIn</a></p>
-  </header>
+  <div class="bg-animation"></div>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <div class="nav-container">
+      <div class="nav-logo">ES</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I’m an International MBA and Engineer with 10+ years of global experience leading transformation programs in logistics, energy, pharma, and shipping. Currently at DCSA, I manage the design and delivery of digital standards adopted across the global container shipping ecosystem.</p>
-    <p>Known for aligning complex stakeholder groups, coaching teams, and driving change through Agile and API-based solutions, I bring a strategic yet execution-focused approach to transformation leadership.</p>
+  <header>
+    <div class="hero-content">
+      <h1 class="hero-title">Emilio Solanes</h1>
+      <p class="hero-subtitle">Head of Delivery | Operations Transformation | Program Director</p>
+      <p class="hero-location">Amsterdam, EU Citizen</p>
+      <div class="cta-buttons">
+        <a href="#contact" class="btn btn-primary">Get In Touch</a>
+        <a href="https://www.linkedin.com/in/esolanes" class="btn btn-outline" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="section fade-in">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <div class="about-image">ES</div>
+      <div class="about-text">
+        <p>I'm an International MBA and Engineer with 10+ years of global experience leading transformation programs in logistics, energy, pharma, and shipping. Currently at DCSA, I manage the design and delivery of digital standards adopted across the global container shipping ecosystem.</p>
+        <p>Known for aligning complex stakeholder groups, coaching teams, and driving change through Agile and API-based solutions, I bring a strategic yet execution-focused approach to transformation leadership.</p>
+      </div>
+    </div>
   </section>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <h3>Head of Delivery – DCSA (2025–Present)</h3>
-    <ul>
-      <li>Delivered standards for eBL, Booking, T&T, Schedules, and JIT Port Call</li>
-      <li>Led SDLC, Agile adoption, and stakeholder alignment across 9+ carriers</li>
-    </ul>
+  <section id="experience" class="section fade-in">
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="experience-timeline">
+      <div class="experience-item">
+        <h3 class="experience-title">Head of Delivery</h3>
+        <div class="experience-company">DCSA (2025–Present)</div>
+        <ul class="experience-achievements">
+          <li>Delivered standards for eBL, Booking, T&T, Schedules, and JIT Port Call</li>
+          <li>Led SDLC, Agile adoption, and stakeholder alignment across 9+ carriers</li>
+        </ul>
+      </div>
 
-    <h3>Senior Project Manager – DCSA (2021–2024)</h3>
-    <ul>
-      <li>Co-created API specs, drove GitHub reviews and tech adoption strategy</li>
-      <li>Enhanced delivery governance and resource planning processes</li>
-    </ul>
+      <div class="experience-item">
+        <h3 class="experience-title">Senior Project Manager</h3>
+        <div class="experience-company">DCSA (2021–2024)</div>
+        <ul class="experience-achievements">
+          <li>Co-created API specs, drove GitHub reviews and tech adoption strategy</li>
+          <li>Enhanced delivery governance and resource planning processes</li>
+        </ul>
+      </div>
 
-    <h3>Senior Consultant – Alfa Consulting (2018–2021)</h3>
-    <ul>
-      <li>Redesigned operations for Iberdrola, Repsol, Grifols, Avangrid</li>
-      <li>Led solar & wind O&M transformation across 7000 MW US plants</li>
-    </ul>
+      <div class="experience-item">
+        <h3 class="experience-title">Senior Consultant</h3>
+        <div class="experience-company">Alfa Consulting (2018–2021)</div>
+        <ul class="experience-achievements">
+          <li>Redesigned operations for Iberdrola, Repsol, Grifols, Avangrid</li>
+          <li>Led solar & wind O&M transformation across 7000 MW US plants</li>
+        </ul>
+      </div>
 
-    <h3>Shell, LATAM Airlines, South Summit (2011–2017)</h3>
-    <ul>
-      <li>Financial leadership across B2B/B2C segments</li>
-      <li>PMO roles and early innovation challenges in aviation and retail</li>
-    </ul>
+      <div class="experience-item">
+        <h3 class="experience-title">Multiple Leadership Roles</h3>
+        <div class="experience-company">Shell, LATAM Airlines, South Summit (2011–2017)</div>
+        <ul class="experience-achievements">
+          <li>Financial leadership across B2B/B2C segments</li>
+          <li>PMO roles and early innovation challenges in aviation and retail</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
-  <section id="education">
-    <h2>Education</h2>
-    <p><strong>International MBA</strong> – IE Business School, Spain (2016–2017)</p>
-    <p><strong>Industrial Engineering</strong> – National University of Cuyo, Argentina (2004–2010)</p>
+  <section id="skills" class="section fade-in">
+    <h2 class="section-title">Skills & Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>Tools & Technologies</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">SAP</span>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Confluence</span>
+          <span class="skill-tag">Google Data Studio</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3>Certifications</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">GenAI for PMs (PMI)</span>
+          <span class="skill-tag">Scrum Master (PSM)</span>
+          <span class="skill-tag">OpenAPI</span>
+          <span class="skill-tag">Six Sigma</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3>Languages</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Spanish (Native)</span>
+          <span class="skill-tag">English (Fluent)</span>
+          <span class="skill-tag">Italian (Fluent)</span>
+          <span class="skill-tag">Catalan (Fluent)</span>
+          <span class="skill-tag">Portuguese (Intermediate)</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3>Education</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">International MBA - IE Business School</span>
+          <span class="skill-tag">Industrial Engineering - National University of Cuyo</span>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="skills">
-    <h2>Skills & Certifications</h2>
-    <ul>
-      <li>Tools: Power BI, Tableau, SAP, Jira, Confluence, Google Data Studio</li>
-      <li>Certifications: GenAI for PMs (PMI), Scrum Master (PSM), OpenAPI, Six Sigma</li>
-      <li>Languages: Spanish (Native), English, Italian, Catalan (Fluent), Portuguese (Intermediate)</li>
-    </ul>
-  </section>
-
-  <section id="projects">
-    <h2>Projects & Startups</h2>
-    <p><strong>Dinvent MED</strong> – Pitch Advisor & Product Strategist</p>
-    <p><strong>South Summit</strong> – Speaker Relations, Innovation Stage Management</p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/esolanes">linkedin.com/in/esolanes</a></p>
-    <p>Linktree: <a href="https://linktr.ee/esolanes">linktr.ee/esolanes</a></p>
+  <section id="contact" class="section fade-in">
+    <h2 class="section-title">Let's Connect</h2>
+    <div class="contact-content">
+      <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-secondary);">
+        Ready to discuss your next transformation project? Let's talk about how we can drive change together.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:emilio.solanes@alumni.ie.edu" class="contact-link">
+          <span>📧</span>
+          <span>Email</span>
+        </a>
+        <a href="https://www.linkedin.com/in/esolanes" class="contact-link" target="_blank">
+          <span>💼</span>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://linktr.ee/esolanes" class="contact-link" target="_blank">
+          <span>🔗</span>
+          <span>Linktree</span>
+        </a>
+      </div>
+    </div>
   </section>
 
   <footer>
-    &copy; 2025 Emilio Solanes — All rights reserved.
+    <p>&copy; 2025 Emilio Solanes — All rights reserved.</p>
   </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Navigation background on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 100) {
+        nav.style.background = 'rgba(26, 26, 26, 0.98)';
+      } else {
+        nav.style.background = 'rgba(26, 26, 26, 0.95)';
+      }
+    });
+
+    // Dynamic typing effect for hero title (optional enhancement)
+    function typeWriter(element, text, speed = 100) {
+      let i = 0;
+      element.innerHTML = '';
+      function type() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        }
+      }
+      type();
+    }
+
+    // Initialize animations on load
+    window.addEventListener('load', () => {
+      // Add any additional load animations here
+    });
+  </script>
 </body>
 </html>
-
-
