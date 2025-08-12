@@ -157,6 +157,40 @@
         }
         .skill-tag:hover{ background:var(--secondary-color); transform:translateY(-2px); }
 
+        /* Companies Section */
+        .companies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            justify-items: center;
+        }
+        .company-logo {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        .company-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(0.9);
+            transition: filter .3s ease;
+        }
+        .company-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 188, 212, .3);
+        }
+        .company-logo:hover img {
+            filter: grayscale(0%) brightness(1);
+        }
+
         /* Contact */
         .contact-content{ text-align:center; max-width:600px; margin:0 auto; }
         .contact-links{ display:flex; justify-content:center; gap:2rem; margin-top:2rem; flex-wrap:wrap; }
@@ -200,6 +234,7 @@
                 <li><a href="#about" onclick="scrollToSection('about')">About</a></li>
                 <li><a href="#experience" onclick="scrollToSection('experience')">Experience</a></li>
                 <li><a href="#skills" onclick="scrollToSection('skills')">Skills</a></li>
+                <li><a href="#companies" onclick="scrollToSection('companies')">Companies</a></li>
                 <li><a href="#contact" onclick="scrollToSection('contact')">Contact</a></li>
             </ul>
         </div>
@@ -307,8 +342,6 @@
     <section id="experience" class="section">
         <h2 class="section-title">Professional Experience</h2>
         <div class="experience-timeline">
-            <!-- Items omitted for brevity (unchanged content) -->
-            <!-- Keep your four experience items exactly as in your original file -->
             <!-- START of Experience Item 1 -->
             <div class="experience-item">
                 <div class="experience-header" onclick="toggleExperience(0)">
@@ -391,8 +424,8 @@
                 </div>
                 <div class="experience-details">
                     <div class="detail-section"><h4 class="detail-title">Role Overview</h4><p>As a Senior Consultant, I specialized in large-scale operational transformations for Fortune 500 companies in energy and pharmaceutical sectors. My work focused on process optimization, digital transformation, and organizational change management across international operations.</p></div>
-                    <div class="detail-section"><h4 class="detail-title">Key Achievements</h4><ul class="experience-achievements"><li>Redesigned operations for Iberdrola, Repsol, Grifols, Avangrid</li><li>Led solar & wind O&M transformation across 7000 MW US plants</li></ul></div>
-                    <div class="detail-section"><h4 class="detail-title">Major Projects</h4><ul class="experience-achievements"><li>Iberdrola renewable energy O&M optimization across 7000 MW portfolio</li><li>Repsol downstream operations digitalization saving €15M annually</li><li>Grifols global supply chain redesign improving delivery performance by 35%</li><li>Avangrid grid modernization program covering 3.3M customers</li></ul></div>
+                    <div class="detail-section"><h4 class="detail-title">Key Achievements</h4><ul class="experience-achievements"><li>Redesigned operations for Iberdrola, Repsol, Grifols, Avangrid</li><li>Led solar & wind O&amp;M transformation across 7000 MW US plants</li></ul></div>
+                    <div class="detail-section"><h4 class="detail-title">Major Projects</h4><ul class="experience-achievements"><li>Iberdrola renewable energy O&amp;M optimization across 7000 MW portfolio</li><li>Repsol downstream operations digitalization saving €15M annually</li><li>Grifols global supply chain redesign improving delivery performance by 35%</li><li>Avangrid grid modernization program covering 3.3M customers</li></ul></div>
                     <div class="detail-grid">
                         <div class="detail-item"><h5>Team Size</h5><p>5-20 people per project</p></div>
                         <div class="detail-item"><h5>Budget/Revenue</h5><p>€5-50M per transformation program</p></div>
@@ -412,12 +445,12 @@
                     <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"></polyline></svg>
                 </div>
                 <div class="experience-details">
-                    <div class="detail-section"><h4 class="detail-title">Role Overview</h4><p>Progressive leadership roles across diverse industries including energy, aviation, and technology innovation. Managed P&L responsibility for multi-million dollar business units and led early-stage innovation initiatives in emerging markets.</p></div>
+                    <div class="detail-section"><h4 class="detail-title">Role Overview</h4><p>Progressive leadership roles across diverse industries including energy, aviation, and technology innovation. Managed P&amp;L responsibility for multi-million dollar business units and led early-stage innovation initiatives in emerging markets.</p></div>
                     <div class="detail-section"><h4 class="detail-title">Key Achievements</h4><ul class="experience-achievements"><li>Financial leadership across B2B/B2C segments</li><li>PMO roles and early innovation challenges in aviation and retail</li></ul></div>
                     <div class="detail-section"><h4 class="detail-title">Major Projects</h4><ul class="experience-achievements"><li>Shell lubricants business transformation in LATAM generating $12M revenue growth</li><li>LATAM Airlines cargo operations optimization improving margin by 18%</li><li>South Summit startup acceleration program managing 150+ early-stage companies</li><li>Innovation lab setup for digital transformation initiatives</li></ul></div>
                     <div class="detail-grid">
                         <div class="detail-item"><h5>Team Size</h5><p>10-50 people across different roles</p></div>
-                        <div class="detail-item"><h5>Budget/Revenue</h5><p>$2-25M P&L responsibility</p></div>
+                        <div class="detail-item"><h5>Budget/Revenue</h5><p>$2-25M P&amp;L responsibility</p></div>
                         <div class="detail-item"><h5>Technologies</h5><div class="tech-tags"><span class="tech-tag">SAP</span><span class="tech-tag">Oracle</span><span class="tech-tag">BI tools</span><span class="tech-tag">+1 more</span></div></div>
                     </div>
                 </div>
@@ -470,6 +503,23 @@
         </div>
     </section>
 
+    <!-- Companies -->
+    <section id="companies" class="section">
+        <h2 class="section-title">Companies I've Worked With</h2>
+        <div class="companies-grid" aria-label="Company logos">
+            <div class="company-logo"><img src="assets/dcsalogo.png" alt="DCSA Logo"></div>
+            <div class="company-logo"><img src="assets/accenturelogo.png" alt="Accenture Logo"></div>
+            <div class="company-logo"><img src="assets/avangridlogo.png" alt="Avangrid Logo"></div>
+            <div class="company-logo"><img src="assets/iberdrolalogo.png" alt="Iberdrola Logo"></div>
+            <div class="company-logo"><img src="assets/accionalogo.png" alt="Acciona Logo"></div>
+            <div class="company-logo"><img src="assets/grifolslogo.png" alt="Grifols Logo"></div>
+            <div class="company-logo"><img src="assets/schindlerlogo.jpg" alt="Schindler Logo"></div>
+            <div class="company-logo"><img src="assets/repsollogo.png" alt="Repsol Logo"></div>
+            <div class="company-logo"><img src="assets/shelllogo.png" alt="Shell Logo"></div>
+            <div class="company-logo"><img src="assets/latamlogo.jpg" alt="LATAM Airlines Logo"></div>
+        </div>
+    </section>
+
     <!-- Contact -->
     <section id="contact" class="section">
         <h2 class="section-title">Let's Connect</h2>
@@ -479,8 +529,8 @@
             </p>
             <div class="contact-links">
                 <a href="mailto:emilio.solanes@alumni.ie.edu" class="contact-link"><span>📧</span><span>Email</span></a>
-                <a href="https://www.linkedin.com/in/esolanes" class="contact-link" target="_blank"><span>💼</span><span>LinkedIn</span></a>
-                <a href="https://linktr.ee/esolanes" class="contact-link" target="_blank"><span>🔗</span><span>Linktree</span></a>
+                <a href="https://www.linkedin.com/in/esolanes" class="contact-link" target="_blank" rel="noopener noreferrer"><span>💼</span><span>LinkedIn</span></a>
+                <a href="https://linktr.ee/esolanes" class="contact-link" target="_blank" rel="noopener noreferrer"><span>🔗</span><span>Linktree</span></a>
             </div>
         </div>
     </section>
