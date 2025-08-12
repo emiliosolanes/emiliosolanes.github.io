@@ -53,6 +53,7 @@
         .nav-links a:hover::after{ width:100%; }
         .nav-links a:hover{ color:var(--secondary-color); }
 
+              
         /* Hero */
         .hero{ min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; overflow:hidden; }
         .hero-bg{ position:absolute; inset:0; background:linear-gradient(135deg,#1e3a8a 0%,#1e40af 25%,#0c4a6e 50%,#065f46 75%,#166534 100%); z-index:1; }
@@ -72,6 +73,11 @@
         .btn:hover{ transform:translateY(-2px); box-shadow:0 10px 20px rgba(0,0,0,.3); }
         .btn-primary:hover{ background:#0097a7; }
         .btn-outline:hover{ background:#fff; color:var(--primary-color); }
+
+        /* Hook */
+        .about-hook{ font-size:1.15rem; color:var(--text-primary); line-height:1.7; margin-bottom:1rem; }
+        .about-text p + p{ margin-top:1rem; }
+        .btn-sm{ padding:10px 16px; font-size:.9rem; border-radius:999px; }
 
         /* Sections */
         .section{ padding:6rem 2rem; max-width:1200px; margin:0 auto; opacity:0; transform:translateY(30px); transition:all .7s ease; }
@@ -332,8 +338,15 @@
                 <img src="assets/IMG_20200312_191048.jpg" alt="About ES" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div class="about-text">
-                <p>I'm an International MBA and Engineer with 10+ years of global experience leading transformation programs in logistics, energy, pharma, and shipping. Currently at DCSA, I manage the design and delivery of digital standards adopted across the global container shipping ecosystem.</p>
-                <p>Known for aligning complex stakeholder groups, coaching teams, and driving change through Agile and API-based solutions, I bring a strategic yet execution-focused approach to transformation leadership.</p>
+                <p class="about-hook"><strong>I run transformation programs that stick</strong> - aligning stakeholders, shipping solutions, and making change last.</p>
+
+                <p>I help logistics, shipping, and industrial companies turn complex, multi-stakeholder programs into measurable results. An engineer with an International MBA, I currently lead the delivery of digital standards at DCSA, aligning 9+ global carriers and partners and taking initiatives from discovery through release (Track &amp; Trace, Operational &amp; Commercial Schedules, eBL, Booking, Arrival Notice, (JIT) Port Call Services, etc.).</p>
+
+                <p> I combine strategic clarity with delivery discipline - designing operating models, facilitating alignment, and removing blockers so execution keeps moving. Tech-literate and outcome-driven, I bridge business and engineering, making decisions visible and results inevitable.</p>
+
+                <p><strong>How I work:</strong> fractional Head of Delivery, or Program Director, API &amp; standards advisor, or rapid “program recovery” that de-risk timelines and accelerate results.</p>
+
+                <a href="#contact" class="btn btn-primary btn-sm" onclick="scrollToSection('contact')">Book a 20-min intro</a>
             </div>
         </div>
     </section>
